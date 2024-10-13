@@ -10,9 +10,8 @@
             background-color: var(--bg-color);
             color: var(--text-color);
             margin: 0;
-            padding: 20px;
+            padding: 10px;
             transition: background-color 0.3s, color 0.3s;
-            font-size: 1rem;
         }
         h1, h2 {
             color: var(--heading-color);
@@ -20,14 +19,14 @@
         .container {
             max-width: 100%;
             margin: 0 auto;
-            padding: 20px;
+            padding: 10px;
             background-color: var(--container-bg);
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0,0,0,0.1);
             transition: background-color 0.3s;
         }
         .warband-section {
-            margin-bottom: 40px;
+            margin-bottom: 20px;
         }
         .warband-section h2 {
             border-bottom: 2px solid var(--heading-color);
@@ -35,7 +34,7 @@
         }
         .ability {
             border: 1px solid var(--border-color);
-            padding: 20px;
+            padding: 15px;
             margin: 10px 0;
             border-radius: 8px;
             background-color: var(--ability-bg);
@@ -57,19 +56,13 @@
         .filter-bar {
             display: flex;
             flex-direction: column;
-            align-items: stretch;
             gap: 10px;
             margin-bottom: 20px;
         }
-        @media (min-width: 600px) {
-            .filter-bar {
-                flex-direction: row;
-                justify-content: space-between;
-            }
-        }
         .filter-bar input, .filter-bar select {
             padding: 10px;
-            font-size: 16px;
+            font-size: 14px;
+            width: 100%;
         }
         .toggle-switch {
             display: flex;
@@ -79,20 +72,17 @@
         .toggle-switch label {
             font-weight: bold;
         }
-        @media (max-width: 600px) {
-            .container {
-                padding: 10px;
+
+        /* Media Query for screens smaller than 768px */
+        @media (min-width: 768px) {
+            .filter-bar {
+                flex-direction: row;
+                justify-content: space-between;
             }
-            .ability {
-                padding: 15px;
-            }
-            h1 {
-                font-size: 1.2rem;
-            }
-        }
-        @media (min-width: 600px) {
-            h1 {
-                font-size: 2rem;
+
+            .filter-bar input, .filter-bar select {
+                width: auto;
+                font-size: 16px;
             }
         }
     </style>
@@ -102,12 +92,11 @@
         <h1 style="text-align: center;">Warcry Abilities</h1>
 
         <div class="filter-bar">
-            <input type="text" id="searchBar" placeholder="Search abilities..." onkeyup="filterAbilities()">
-            <select id="warbandFilter" onchange="filterAbilities()">
+            <input type="text" id="searchBar" placeholder="Search abilities..." onkeyup="searchAbilities()">
+            <select id="warbandFilter" onchange="searchAbilities()">
                 <option value="all">All Warbands</option>
-                <!-- Add options dynamically based on available warbands -->
             </select>
-            <select id="costFilter" onchange="filterAbilities()">
+            <select id="costFilter" onchange="filterWarband()">
                 <option value="all">All Costs</option>
                 <option value="double">Double</option>
                 <option value="triple">Triple</option>
@@ -116,14 +105,18 @@
             </select>
             <div class="toggle-switch">
                 <label for="themeToggle">Dark Mode</label>
-                <input type="checkbox" id="themeToggle" onclick="toggleTheme()" checked>
+                <input type="checkbox" id="themeToggle" checked onclick="toggleTheme()">
             </div>
         </div>
 
         <div id="abilitiesContainer"></div>
     </div>
 
+    <!-- Add Elasticlunr.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/elasticlunr/0.9.5/elasticlunr.min.js"></script>
+
     <script>
+        // Theme settings
         const lightTheme = {
             '--bg-color': '#f4f4f9',
             '--text-color': '#333',
@@ -142,33 +135,30 @@
             '--ability-bg': '#2c2c2c'
         };
 
-        function toggleTheme() {
-            const isDarkMode = document.getElementById('themeToggle').checked;
-            const theme = isDarkMode ? darkTheme : lightTheme;
-            applyTheme(theme);
-        }
-
-        function applyTheme(theme) {
-            for (const property in theme) {
-                document.documentElement.style.setProperty(property, theme[property]);
-            }
-        }
-
-        // Set theme on page load based on checkbox state
+        // Automatically apply dark theme on page load if checkbox is checked
         window.onload = function() {
-            const isDarkMode = document.getElementById('themeToggle').checked;
-            const theme = isDarkMode ? darkTheme : lightTheme;
-            applyTheme(theme);
+            const isDark = document.getElementById('themeToggle').checked;
+            const theme = isDark ? darkTheme : lightTheme;
+            Object.keys(theme).forEach(key => {
+                document.body.style.setProperty(key, theme[key]);
+            });
+
+            // Populate abilities and warbands
+            populateAbilities();
+        };
+
+        function toggleTheme() {
+            const isDark = document.getElementById('themeToggle').checked;
+            const theme = isDark ? darkTheme : lightTheme;
+            Object.keys(theme).forEach(key => {
+                document.body.style.setProperty(key, theme[key]);
+            });
         }
 
-        function filterAbilities() {
-            // Implement filtering logic here
-        }
-    
-
+        // Abilities data (shortened for example)
         const abilities = [
-            {
-                "name": "Moment of Savagery",
+                {
+        "name": "Moment of Savagery",
         "warband": "Askurgan Trueblades",
         "cost": "double",
         "description": "A fighter can only use this ability if an enemy fighter has been taken down by an attack action made by them this activation.  This fighter makes a bonus move action or a bonus attack action.",
@@ -7673,60 +7663,157 @@
         "warband": "universal",
         "cost": "quad",
         "description": "Pick a terrain feature within 1\" of this monster. In an order of your choice, place each objective, treasure token and fighter that is on that terrain feature, and on any other terrain feature that is on that terrain feature, on the battlefield floor in a location of your choice as close as possible horizontally to its current location. Then, in an order of your choice, each fighter placed on the battlefield in this manner suffers impact damage. Then, remove the terrain feature(s).",
-        "runemarks": ["monster"]
-    },
-                        // Add the rest of the abilities from the JSON, including their runemarks...
-       ];
+        "runemarks": [
+            "monster"
+        ]
+    }
+        ];
 
-        function toggleTheme() {
-            const isDark = document.getElementById('themeToggle').checked;
-            const theme = isDark ? darkTheme : lightTheme;
-            Object.keys(theme).forEach(key => {
-                document.body.style.setProperty(key, theme[key]);
+        // Create the Elasticlunr index
+        const index = elasticlunr(function () {
+            this.addField('name');
+            this.addField('warband');
+            this.addField('description');
+            this.setRef('id');
+        });
+
+        // Add abilities to the index
+        abilities.forEach((ability, indexId) => {
+            index.addDoc({
+                id: indexId,
+                name: ability.name,
+                warband: ability.warband,
+                description: ability.description
             });
-        }
+        });
 
-        function filterAbilities() {
-            const searchText = document.getElementById('searchBar').value.toLowerCase();
-            const warband = document.getElementById('warbandFilter').value.toLowerCase();
-            const cost = document.getElementById('costFilter').value.toLowerCase();
-            const container = document.getElementById('abilitiesContainer');
-            container.innerHTML = '';
+        function populateAbilities() {
+            const warbandSet = new Set();
+            const abilitiesContainer = document.getElementById("abilitiesContainer");
+            abilitiesContainer.innerHTML = ''; 
 
             abilities.forEach(ability => {
-                const matchesWarband = warband === 'all' || ability.warband.toLowerCase().includes(warband);
-                const matchesCost = cost === 'all' || ability.cost.toLowerCase() === cost;
-                const matchesSearch = ability.name.toLowerCase().includes(searchText);
+                warbandSet.add(ability.warband);
 
-                if (matchesWarband && matchesCost && matchesSearch) {
-                    const abilityDiv = document.createElement('div');
-                    abilityDiv.classList.add('ability');
-                    abilityDiv.innerHTML = `
-                        <h3>${ability.name}</h3>
-                        <p><strong>Warband:</strong> ${ability.warband}</p>
-                        <p class="cost"><strong>Cost:</strong> ${ability.cost}</p>
-                        <p>${ability.description}</p>
-                    `;
-                    container.appendChild(abilityDiv);
+                let warbandSection = document.querySelector(`[data-warband="${ability.warband}"]`);
+                if (!warbandSection) {
+                    const newWarbandSection = document.createElement("div");
+                    newWarbandSection.classList.add("warband-section");
+                    newWarbandSection.setAttribute("data-warband", ability.warband);
+                    newWarbandSection.innerHTML = `<h2>${ability.warband}</h2>`;
+                    abilitiesContainer.appendChild(newWarbandSection);
                 }
-            });
-        }
 
-        // Populate the warband filter with unique warbands from the abilities array
-        function populateWarbandFilter() {
-            const warbandFilter = document.getElementById('warbandFilter');
-            const uniqueWarbands = [...new Set(abilities.map(ability => ability.warband))];
-            
-            uniqueWarbands.forEach(warband => {
-                const option = document.createElement('option');
+                const abilityDiv = document.createElement("div");
+                abilityDiv.classList.add("ability");
+                abilityDiv.innerHTML = `
+                    <h3>${ability.name}</h3>
+                    <p class="cost">Cost: ${ability.cost}</p>
+                    <p class="description">${ability.description}</p>
+                    <p class="runemarks">Runemarks: ${ability.runemarks.length > 0 ? ability.runemarks.join(", ") : 'None'}</p>
+                `;
+                document.querySelector(`[data-warband="${ability.warband}"]`).appendChild(abilityDiv);
+            });
+
+            const warbandFilter = document.getElementById("warbandFilter");
+            warbandSet.forEach(warband => {
+                const option = document.createElement("option");
                 option.value = warband;
-                option.textContent = warband;
+                option.text = warband;
                 warbandFilter.appendChild(option);
             });
         }
 
-        populateWarbandFilter(); // Populate warband filter on page load
-        filterAbilities(); // Call filter on page load to show abilities
+        // Modify the searchAbilities function to use both search input and warband filter with AND logic
+        function searchAbilities() {
+            const input = document.getElementById('searchBar').value.toLowerCase();
+            const selectedWarband = document.getElementById('warbandFilter').value;
+
+            // Split the input into individual words
+            const searchTerms = input.trim().split(/\s+/); // Splits by spaces
+
+            // Search results for each term
+            let results = index.search(searchTerms[0], {
+                fields: {
+                    name: {boost: 2},
+                    warband: {boost: 1},
+                    description: {boost: 1}
+                },
+                expand: true
+            });
+
+            // Perform AND logic for all search terms
+            searchTerms.slice(1).forEach(term => {
+                const termResults = index.search(term, {
+                    fields: {
+                        name: {boost: 2},
+                        warband: {boost: 1},
+                        description: {boost: 1}
+                    },
+                    expand: true
+                });
+                results = results.filter(result => termResults.some(tr => tr.ref === result.ref));
+            });
+
+            // Clear the container before displaying search results
+            const abilitiesContainer = document.getElementById("abilitiesContainer");
+            abilitiesContainer.innerHTML = '';
+
+            // Display results
+            if (results.length > 0) {
+                results.forEach(result => {
+                    const ability = abilities[result.ref];
+
+                    // Check if the ability matches the selected warband (or if "All" is selected)
+                    if (selectedWarband === "all" || ability.warband === selectedWarband) {
+                        const abilityDiv = document.createElement("div");
+                        abilityDiv.classList.add("ability");
+                        abilityDiv.innerHTML = `
+                            <h3>${ability.name}</h3>
+                            <p class="warband"><strong>Warband:</strong> ${ability.warband}</p>
+                            <p class="cost">Cost: ${ability.cost}</p>
+                            <p class="description">${ability.description}</p>
+                            <p class="runemarks">Runemarks: ${ability.runemarks.length > 0 ? ability.runemarks.join(", ") : 'None'}</p>
+                        `;
+                        abilitiesContainer.appendChild(abilityDiv);
+                    }
+                });
+            } else {
+                abilitiesContainer.innerHTML = '<p>No results found.</p>';
+            }
+        }
+
+        function filterWarband() {
+            const warbandFilterValue = document.getElementById('warbandFilter').value;
+            const costFilterValue = document.getElementById('costFilter').value;
+            const warbands = document.getElementsByClassName('warband-section');
+            
+            Array.from(warbands).forEach(function(warband) {
+                const abilities = warband.getElementsByClassName('ability');
+                let showWarband = false;
+
+                Array.from(abilities).forEach(function(ability) {
+                    const cost = ability.querySelector('.cost').textContent.toLowerCase();
+                    const matchesCost = (costFilterValue === 'all' || cost.includes(costFilterValue.toLowerCase()));
+                    const matchesWarband = (warbandFilterValue === 'all' || warband.getAttribute('data-warband') === warbandFilterValue);
+
+                    if (matchesCost && matchesWarband) {
+                        ability.style.display = '';
+                        showWarband = true;
+                    } else {
+                        ability.style.display = 'none';
+                    }
+                });
+
+                if (showWarband) {
+                    warband.style.display = '';
+                } else {
+                    warband.style.display = 'none';
+                }
+            });
+        }
+
+        populateAbilities();
     </script>
 </body>
 </html>
