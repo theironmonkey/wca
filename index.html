@@ -5,6 +5,45 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Warcry Abilities</title>
     <style>
+    /* Modernized Filter and Search Bars */
+    .filter-bar input, .filter-bar select {
+        padding: 12px;
+        font-size: 16px;
+        border-radius: 25px;
+        border: 1px solid #ddd;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+    }
+
+    .filter-bar input:focus, .filter-bar select:focus {
+        border-color: #007bff;
+        box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+        outline: none;
+    }
+
+    .filter-bar input:hover, .filter-bar select:hover {
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .toggle-switch input {
+        transform: scale(1.5);
+        cursor: pointer;
+    }
+
+    .toggle-switch label {
+        font-size: 18px;
+        font-weight: bold;
+        cursor: pointer;
+    }
+
+    /* Responsive design for smaller screens */
+    @media (max-width: 768px) {
+        .filter-bar {
+            flex-direction: column;
+            gap: 15px;
+        }
+    }
+    
         body {
             font-family: Arial, sans-serif;
             background-color: var(--bg-color);
@@ -190,6 +229,7 @@
 
         const abilities = [
           
+    
     {
         "_id": "48f97b6e",
         "name": "Moment of Savagery",
@@ -3752,7 +3792,7 @@
         "cost": "double",
         "description": "A fighter can only use this ability if there is a visible enemy fighter within 6\" of them. This fighter makes a bonus move action and must finish closer to the closest visible enemy fighter than they were at the start of that move action.",
         "runemarks": [],
-        "grand_alliance": "order"
+        "grand_alliance": "destruction"
     },
     {
         "_id": "06a33891",
@@ -3763,7 +3803,7 @@
         "runemarks": [
             "brute"
         ],
-        "grand_alliance": "order"
+        "grand_alliance": "destruction"
     },
     {
         "_id": "3a23c80f",
@@ -3774,7 +3814,7 @@
         "runemarks": [
             "brute"
         ],
-        "grand_alliance": "order"
+        "grand_alliance": "destruction"
     },
     {
         "_id": "aecd0a65",
@@ -3786,7 +3826,7 @@
             "hero",
             "frenzied"
         ],
-        "grand_alliance": "order"
+        "grand_alliance": "destruction"
     },
     {
         "_id": "4f9b5078",
@@ -3798,7 +3838,7 @@
             "hero",
             "berserker"
         ],
-        "grand_alliance": "order"
+        "grand_alliance": "destruction"
     },
     {
         "_id": "19680c71",
@@ -3810,7 +3850,7 @@
             "hero",
             "mystic"
         ],
-        "grand_alliance": "order"
+        "grand_alliance": "destruction"
     },
     {
         "_id": "9b0f513f",
@@ -3821,7 +3861,7 @@
         "runemarks": [
             "ferocious"
         ],
-        "grand_alliance": "order"
+        "grand_alliance": "destruction"
     },
     {
         "_id": "cb771b64",
@@ -3832,7 +3872,7 @@
         "runemarks": [
             "hero"
         ],
-        "grand_alliance": "order"
+        "grand_alliance": "destruction"
     },
     {
         "_id": "da50dd2f",
@@ -3844,7 +3884,7 @@
             "hero",
             "champion"
         ],
-        "grand_alliance": "order"
+        "grand_alliance": "destruction"
     },
     {
         "_id": "24ef0a67",
@@ -3853,7 +3893,7 @@
         "cost": "quad",
         "description": "Until the end of this fighter's activation, add 1 to the Attacks characteristic of attack actions made by this fighter. In addition, until the end of this fighter's activation, after an enemy fighter is taken down by an attack action made by this fighter, this fighter can make a bonus move action.",
         "runemarks": [],
-        "grand_alliance": "order"
+        "grand_alliance": "destruction"
     },
     {
         "_id": "2531bf9c",
@@ -3862,7 +3902,7 @@
         "cost": "reaction",
         "description": "A fighter can make this reaction after an enemy fighter finishes a move action visible to this fighter and within 3\" of this fighter. Pick another friendly fighter within 3\" of this fighter. That fighter makes a bonus move action. After that move action that fighter must be within 1\" of the enemy fighter that made the move action.",
         "runemarks": [],
-        "grand_alliance": "order"
+        "grand_alliance": "destruction"
     },
     {
         "_id": "cc3769ad",
@@ -3873,7 +3913,7 @@
         "runemarks": [
             "destroyer"
         ],
-        "grand_alliance": "order"
+        "grand_alliance": "destruction"
     },
     {
         "_id": "bb4f9fa3",
@@ -3884,7 +3924,7 @@
         "runemarks": [
             "terrifying"
         ],
-        "grand_alliance": "order"
+        "grand_alliance": "destruction"
     },
     {
         "_id": "966d5766",
@@ -3895,7 +3935,7 @@
         "runemarks": [
             "bulwark"
         ],
-        "grand_alliance": "order"
+        "grand_alliance": "destruction"
     },
     {
         "_id": "928413af",
@@ -9602,3 +9642,4 @@
     </script>
 </body>
 </html>
+
