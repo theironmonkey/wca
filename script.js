@@ -1,4 +1,3 @@
-
 let allAbilities = []; // This will store the fetched abilities
 
 window.onload = function() {
