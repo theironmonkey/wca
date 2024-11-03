@@ -1,0 +1,67 @@
+h1 {
+  text-align: center;
+  font-family: 'Arial', sans-serif;
+  font-size: 2.5rem;
+}
+
+p {
+  font-family: 'Arial', sans-serif;
+  font-size: 16px;
+}
+
+/* DROPDOWN MENU */
+.dropdown-menu {
+  max-height: 200px; /* Adjust height as needed */
+  overflow-y: auto;  /* Enable vertical scrolling */
+}
+
+/* CLEAR FILTERS BUTTON */
+/* Hide mobile button on larger screens */
+@media (min-width: 576px) {
+  #clearFiltersBtnMobile {
+      display: none;
+  }
+}
+/* Hide desktop button on smaller screens */
+@media (max-width: 575.98px) {
+  #clearFiltersBtn {
+      display: none;
+  }
+}
+
+/* CARD HOVER */
+.hover-shadow {
+  transition: box-shadow 0.3s ease; /* Smooth transition for shadow */
+}
+.hover-shadow:hover {
+  box-shadow: 0 4px 15px rgba(255, 0, 0, 1); /* Red shadow on hover */
+}
+
+/* CARD */
+.border-end {
+    border-right: 2px solid red; /* Change color and thickness as needed */
+}
+
+
+/* DARK MODE */
+
+body.dark-mode {
+  background-color: #121212;
+  color: #ffffff;
+}
+
+.navbar-dark.bg-dark {
+  background-color: #1f1f1f !important;
+}
+
+.dropdown-menu {
+  background-color: #1f1f1f;
+}
+
+.dropdown-item {
+  color: #ffffff;
+}
+
+.dropdown-item:hover {
+  background-color: #333333;
+}

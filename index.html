@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Warcry Abilities</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+  <div class="fixed-header">
+    
+    <div class="container mt-5">
+      <ul class="navbar-nav">
+          <li class="nav-item ms-auto d-flex align-items-center">
+              <span class="nav-link">Dark Mode</span>
+              <div class="form-check form-switch ms-2">
+                  <input class="form-check-input" type="checkbox" id="darkModeToggle" checked>
+              </div>
+          </li>
+      </ul>
+  
+      <h1>Warcry Abilities</h1>
+  
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+  
+          <span class="navbar-brand">Filters:</span>
+  
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDarkDropdown" aria-controls="navbarNavDarkDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+  
+          <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
+            <ul class="navbar-nav">
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownWarbands" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Warbands
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownWarbands" id="warbandFilter">
+                </div>
+              </li>
+  
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownCost" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Cost
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownCost" id="costFilter">
+                </div>
+              </li>
+  
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownGrandAlliance" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Grand Alliance
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownGrandAlliance" id="grandAllianceFilter">
+                </div>
+              </li>
+  
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownRunemark" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Runemark
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownRunemark" id="runemarkFilter">
+                </div>
+              </li>
+            </ul>
+          </div>
+  
+        </div>
+      </nav>
+    </div>
+
+    <div class="container mt-5">
+      <div id="activeFilters" class="mb-3 d-flex flex-column">
+        <div class="d-flex align-items-center flex-wrap">
+          <h3 class="mb-0">Active Filters:</h3>
+          <p id="filtersDisplay" class="mb-0 ms-3">None</p>
+          <button id="clearFiltersBtn" class="btn btn-secondary ms-auto" onclick="clearFilters()">Clear Filters</button>
+        </div>
+        <div class="d-flex justify-content-center w-100 mt-2 d-sm-none">
+          <button id="clearFiltersBtnMobile" class="btn btn-secondary w-100" onclick="clearFilters()">Clear Filters</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="container mt-5">
+      <div class="d-flex align-items-center mb-2">
+        <input type="text" id="searchBar" class="form-control" placeholder="Search abilities..." onkeyup="searchAbilities()">
+      </div>
+      <div class="d-flex justify-content-end">
+        <div id="abilityCount">Results</div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div id="abilitiesContainer"></div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+
+</body>
+
+</html>
