@@ -5757,7 +5757,7 @@
             "hero",
             "mystic"
         ],
-        "grand_alliance": "order"
+        "grand_alliance": "chaos"
     },
     {
         "_id": "1cbbec6b",
@@ -5768,7 +5768,7 @@
         "runemarks": [
             "frenzied"
         ],
-        "grand_alliance": "order"
+        "grand_alliance": "chaos"
     },
     {
         "_id": "e331bd06",
@@ -5780,7 +5780,7 @@
             "hero",
             "frenzied"
         ],
-        "grand_alliance": "order"
+        "grand_alliance": "chaos"
     },
     {
         "_id": "a5cebf6e",
@@ -5791,7 +5791,7 @@
         "runemarks": [
             "elite"
         ],
-        "grand_alliance": "order"
+        "grand_alliance": "chaos"
     },
     {
         "_id": "2a537a2f",
@@ -5802,7 +5802,7 @@
         "runemarks": [
             "agile"
         ],
-        "grand_alliance": "order"
+        "grand_alliance": "chaos"
     },
     {
         "_id": "567933d7",
@@ -5814,7 +5814,7 @@
             "hero",
             "destroyer"
         ],
-        "grand_alliance": "order"
+        "grand_alliance": "chaos"
     },
     {
         "_id": "142acdc4",
@@ -5825,7 +5825,7 @@
         "runemarks": [
             "brute"
         ],
-        "grand_alliance": "order"
+        "grand_alliance": "chaos"
     },
     {
         "_id": "70ff8318",
@@ -5836,7 +5836,7 @@
         "runemarks": [
             "hero"
         ],
-        "grand_alliance": "order"
+        "grand_alliance": "chaos"
     },
     {
         "_id": "36ef106a",
@@ -5847,7 +5847,7 @@
         "runemarks": [
             "berserker"
         ],
-        "grand_alliance": "order"
+        "grand_alliance": "chaos"
     },
     {
         "_id": "acb87496",
@@ -5859,7 +5859,7 @@
             "hero",
             "scout"
         ],
-        "grand_alliance": "order"
+        "grand_alliance": "chaos"
     },
     {
         "_id": "1dfee2a6",
@@ -5870,7 +5870,7 @@
         "runemarks": [
             "destroyer"
         ],
-        "grand_alliance": "order"
+        "grand_alliance": "chaos"
     },
     {
         "_id": "dfbe1c5c",
@@ -5882,7 +5882,7 @@
             "hero",
             "priest"
         ],
-        "grand_alliance": "order"
+        "grand_alliance": "chaos"
     },
     {
         "_id": "836d0e6d",
@@ -5891,7 +5891,7 @@
         "cost": "reaction",
         "description": "A fighter can make this reaction after an enemy fighter finishes a move action visible to this fighter and within 3\" of this fighter. Pick another friendly fighter with the Skaven faction runemark within 3\" of this fighter. That fighter makes a bonus move action or a bonus disengage action, and must end that action more than 3\" away from the enemy fighter that made the move action.",
         "runemarks": [],
-        "grand_alliance": "order"
+        "grand_alliance": "chaos"
     },
     {
         "_id": "9d116bf6",
@@ -5903,7 +5903,7 @@
             "brute",
             "beast"
         ],
-        "grand_alliance": "order"
+        "grand_alliance": "chaos"
     },
     {
         "_id": "bcb8a954",
@@ -5915,7 +5915,7 @@
             "hero",
             "mount"
         ],
-        "grand_alliance": "order"
+        "grand_alliance": "chaos"
     },
     {
         "_id": "fe91d437",
@@ -5927,7 +5927,7 @@
             "hero",
             "destroyer"
         ],
-        "grand_alliance": "order"
+        "grand_alliance": "chaos"
     },
     {
         "_id": "c4d22bf7",
