@@ -3638,7 +3638,7 @@
         "cost": "double",
         "description": "A fighter can only use this ability if there is a visible enemy fighter within 6\" of them. This fighter makes a bonus move action and must finish closer to the closest visible enemy fighter than they were at the start of that move action.",
         "runemarks": [],
-        "grand_alliance": "order"
+        "grand_alliance": "destruction"
     },
     {
         "_id": "06a33891",
@@ -3649,7 +3649,7 @@
         "runemarks": [
             "brute"
         ],
-        "grand_alliance": "order"
+        "grand_alliance": "destruction"
     },
     {
         "_id": "3a23c80f",
@@ -3660,7 +3660,7 @@
         "runemarks": [
             "brute"
         ],
-        "grand_alliance": "order"
+        "grand_alliance": "destruction"
     },
     {
         "_id": "aecd0a65",
@@ -3672,7 +3672,7 @@
             "hero",
             "frenzied"
         ],
-        "grand_alliance": "order"
+        "grand_alliance": "destruction"
     },
     {
         "_id": "4f9b5078",
@@ -3684,7 +3684,7 @@
             "hero",
             "berserker"
         ],
-        "grand_alliance": "order"
+        "grand_alliance": "destruction"
     },
     {
         "_id": "19680c71",
@@ -3696,7 +3696,7 @@
             "hero",
             "mystic"
         ],
-        "grand_alliance": "order"
+        "grand_alliance": "destruction"
     },
     {
         "_id": "9b0f513f",
@@ -3707,7 +3707,7 @@
         "runemarks": [
             "ferocious"
         ],
-        "grand_alliance": "order"
+        "grand_alliance": "destruction"
     },
     {
         "_id": "cb771b64",
@@ -3718,7 +3718,7 @@
         "runemarks": [
             "hero"
         ],
-        "grand_alliance": "order"
+        "grand_alliance": "destruction"
     },
     {
         "_id": "da50dd2f",
@@ -3730,7 +3730,7 @@
             "hero",
             "champion"
         ],
-        "grand_alliance": "order"
+        "grand_alliance": "destruction"
     },
     {
         "_id": "24ef0a67",
@@ -3739,7 +3739,7 @@
         "cost": "quad",
         "description": "Until the end of this fighter's activation, add 1 to the Attacks characteristic of attack actions made by this fighter. In addition, until the end of this fighter's activation, after an enemy fighter is taken down by an attack action made by this fighter, this fighter can make a bonus move action.",
         "runemarks": [],
-        "grand_alliance": "order"
+        "grand_alliance": "destruction"
     },
     {
         "_id": "2531bf9c",
@@ -3748,7 +3748,7 @@
         "cost": "reaction",
         "description": "A fighter can make this reaction after an enemy fighter finishes a move action visible to this fighter and within 3\" of this fighter. Pick another friendly fighter within 3\" of this fighter. That fighter makes a bonus move action. After that move action that fighter must be within 1\" of the enemy fighter that made the move action.",
         "runemarks": [],
-        "grand_alliance": "order"
+        "grand_alliance": "destruction"
     },
     {
         "_id": "cc3769ad",
@@ -3759,7 +3759,7 @@
         "runemarks": [
             "destroyer"
         ],
-        "grand_alliance": "order"
+        "grand_alliance": "destruction"
     },
     {
         "_id": "bb4f9fa3",
@@ -3770,7 +3770,7 @@
         "runemarks": [
             "terrifying"
         ],
-        "grand_alliance": "order"
+        "grand_alliance": "destruction"
     },
     {
         "_id": "966d5766",
@@ -3781,7 +3781,7 @@
         "runemarks": [
             "bulwark"
         ],
-        "grand_alliance": "order"
+        "grand_alliance": "destruction"
     },
     {
         "_id": "928413af",
@@ -9343,3 +9343,4 @@
         ]
     }
 ]
+
