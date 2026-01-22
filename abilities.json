@@ -3625,6 +3625,7 @@
         "cost": "double",
         "description": "Pick up to 3 visible friendly fighters with the Helsmiths of Hashut runemark. Those fighters can each immediately make a bonus move action of up to 3\".",
         "runemarks": [
+            "hero",
             "champion"
         ],
         "grand_alliance": "chaos"
@@ -3636,6 +3637,7 @@
         "cost": "double",
         "description": "Pick a visible fighter (friendly or enemy) within 8\" of this fighter. If you picked an enemy fighter, subtract 2 from their Toughness characteristic for the rest of the battle round. If you picked a friendly fighter that does not have the Terrifying runemark, add 2 to their Toughness characteristic for the rest of the battle round. If you picked a friendly fighter that has the Terrifying runemark, remove 3 damage points allocated to them.",
         "runemarks": [
+            "hero",
             "mystic"
         ],
         "grand_alliance": "chaos"
@@ -3702,6 +3704,7 @@
         "cost": "triple",
         "description": "Pick a visible friendly fighter. For the rest of the battle round, add 1 to the Attacks and Strength characteristics of attack actions made by that fighter.",
         "runemarks": [
+            "hero",
             "priest"
         ],
         "grand_alliance": "chaos"
